@@ -1,0 +1,110 @@
+Тест на жесты 
+
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
+
+desired_caps = {
+    "platformName": "Android",
+    "deviceName": "emulator-5554",
+    "app": "path_to_youtube_apk_file"
+}
+
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+
+action = TouchAction(driver)
+action.tap(x=500, y=500).perform()
+time.sleep(2)
+
+driver.quit()
+
+
+
+Тест Long
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
+
+desired_caps = {
+    "platformName": "Android",
+    "deviceName": "emulator-5554",
+    "app": "path_to_youtube_apk_file"
+}
+
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+
+action = TouchAction(driver)
+action.long_press(x=500, y=500).perform()
+time.sleep(2)
+
+driver.quit()
+
+
+
+Тест Скроинг
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
+
+desired_caps = {
+    "platformName": "Android",
+    "deviceName": "emulator-5554",
+    "app": "path_to_youtube_apk_file"
+}
+
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+
+action = TouchAction(driver)
+action.press(x=500, y=500).move_to(x=500, y=300).release().perform()
+time.sleep(2)
+
+driver.quit()
+
+
+
+Тест Двойное нажатие
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
+
+desired_caps = {
+    "platformName": "Android",
+    "deviceName": "emulator-5554",
+    "app": "path_to_youtube_apk_file"
+}
+
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+
+action = TouchAction(driver)
+action.tap(x=500, y=500).wait(1000).tap(x=500, y=500).perform()
+time.sleep(2)
+
+driver.quit()
+
+
+
+Тест послед
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
+
+desired_caps = {
+    "platformName": "Android",
+    "deviceName": "emulator-5554",
+    "app": "path_to_youtube_apk_file"
+}
+
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+
+action1 = TouchAction(driver)
+action2 = TouchAction(driver)
+
+action1.press(x=100, y=100).move_to(x=200, y=200).release()
+action2.press(x=300, y=300).move_to(x=200, y=200).release()
+
+multi_action = MultiAction(driver)
+multi_action.add(action1, action2)
+multi_action.perform()
+time.sleep(2)
+
+driver.quit()
